@@ -36,3 +36,27 @@ func merge[T comparable](slices ...[]T) []T {
 	return result
 }
 ```
+
+#### Functional interface
+```go
+// Handler is an interface with only one func.
+type Handler interface {
+    Do (k, v any)
+}
+
+// HandlerFunc is a function type that implements Handler
+type HandlerFunc func(k, v any)
+
+func (hf HandlerFunc) Do(k, v any) {
+    hf(k, v)  // call itself in interface function. 
+}
+
+// Usage
+func Handle(h Handler) {
+    // call h.Do()
+}
+
+func HandleFunc(f func(k, v any)) {
+    Handle(HandlerFunc(f))
+}
+```
