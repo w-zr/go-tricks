@@ -60,3 +60,18 @@ func HandleFunc(f func(k, v any)) {
     Handle(HandlerFunc(f))
 }
 ```
+
+#### TestMain
+```go
+import (
+    "testing"
+    "os"
+)
+
+func TestMain(m *testing.M) {
+    log.Println("Do stuff BEFORE the tests!")
+    defer log.Println("Do stuff AFTER the tests!")
+
+    os.Exit(m.Run())
+}
+```
