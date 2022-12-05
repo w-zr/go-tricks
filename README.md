@@ -105,3 +105,13 @@ Point{X: 1, Y: 1} // no error
 ```bash
 diff -u <(echo -n) <(gofmt -d .)
 ```
+
+#### Go test pprof
+```bash
+# run go test
+go test -cpuprofile cpu.prof -memprofile mem.prof -bench .
+
+# use go tool
+go tool pprof cpu.prof
+go tool pprof mem.prof
+```
