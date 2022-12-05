@@ -75,3 +75,33 @@ func TestMain(m *testing.M) {
     os.Exit(m.Run())
 }
 ```
+
+### From https://github.com/cristaloleg/go-advice
+#### Check interface implementation during compilation
+```go
+var _ io.Reader = (*MyFastReader)(nil)
+```
+
+#### To prevent struct comparison
+```go
+type Point struct {
+    _ [0]func()	// unexported, zero-width non-comparable field
+    X, Y float64
+}
+```
+
+#### To prevent unkeyed literals
+```go
+type Point struct {
+    X, Y float64
+    _    struct{} // to prevent unkeyed literals
+}
+
+Point{1,1} // error
+Point{X: 1, Y: 1} // no error
+```
+
+#### Check if there are mistakes in code formatting
+```bash
+diff -u <(echo -n) <(gofmt -d .)
+```
