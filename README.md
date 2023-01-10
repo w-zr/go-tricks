@@ -17,6 +17,13 @@ func getGID() uint64 {
 }
 ```
 
+#### byte slice to string in unsafe way
+```go
+func unsafeByteSliceToString(key []byte) string {
+	return *(*string)(unsafe.Pointer(&key))
+}
+```
+
 #### Merge slices without duplicates
 ``` go
 func merge[T comparable](slices ...[]T) []T {
