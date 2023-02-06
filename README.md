@@ -19,8 +19,16 @@ func getGID() uint64 {
 
 #### byte slice to string in unsafe way
 ```go
-func unsafeByteSliceToString(key []byte) string {
-	return *(*string)(unsafe.Pointer(&key))
+func unsafeByteSliceToString(b []byte) string {
+	return *(*string)(unsafe.Pointer(&b))
+}
+```
+
+```
+// After go 1.20
+// See https://go.dev/src/strings/builder.go#L48
+func unsafeByteSliceToString(b []byte) string {
+	return unsafe.String(unsafe.SliceData(b), len(b))
 }
 ```
 
