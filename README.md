@@ -24,7 +24,7 @@ func unsafeByteSliceToString(b []byte) string {
 }
 ```
 
-```
+```go
 // After go 1.20
 // See https://go.dev/src/strings/builder.go#L48
 func unsafeByteSliceToString(b []byte) string {
