@@ -18,7 +18,7 @@ func getGID() uint64 {
 ```
 
 #### get caller name and measure time elapsed
-see https://stackoverflow.com/questions/45766572/is-there-an-efficient-way-to-calculate-execution-time-in-golang
+See https://stackoverflow.com/questions/45766572/is-there-an-efficient-way-to-calculate-execution-time-in-golang
 ```go
 // callerName returns the name of the function skip frames up the call stack.
 func callerName(skip int) string {
@@ -57,15 +57,13 @@ func main() {
 
 #### byte slice to string in unsafe way
 ```go
-func unsafeByteSliceToString(b []byte) string {
+func unsafeBytesToString(b []byte) string {
 	return *(*string)(unsafe.Pointer(&b))
 }
-```
 
-```go
 // After go 1.20
 // See https://go.dev/src/strings/builder.go#L48
-func unsafeByteSliceToString(b []byte) string {
+func unsafeBytesToString(b []byte) string {
 	return unsafe.String(unsafe.SliceData(b), len(b))
 }
 ```
