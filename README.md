@@ -1,7 +1,7 @@
 # go-tricks
 
 #### SliceTricks
-See https://github.com/golang/go/wiki/SliceTricks
+See https://go.dev/wiki/SliceTricks
 
 #### Goroutine ID
 **Never use this in runtime!!!**
